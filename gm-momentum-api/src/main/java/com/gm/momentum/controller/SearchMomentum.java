@@ -36,13 +36,13 @@ public class SearchMomentum{
 	}
 
 
-//	@Operation(summary = "Return project of momentum data when search by id")
-//	@ApiResponse(responseCode = "200", description = "OK")
-//	@GetMapping(value = "/search/{projectId}")
-//	public ResponseEntity<Project> getByProjectId(@PathVariable String projectId){
-//		Project project = StaticDataUtil.getProjectData().get(projectId);
-//		return new ResponseEntity<Project>(project, HttpStatus.OK);
-//	}
+	@Operation(summary = "Return project of momentum to populate dropdown")
+	@ApiResponse(responseCode = "200", description = "OK")
+	@GetMapping(value = "/loadall")
+	public ResponseEntity<Set<String>> loadAllIds(@PathVariable String projectId){
+		Map<String, Project> projectData = StaticDataUtil.getProjectData();
+		return new ResponseEntity<Set<String>>(projectData.keySet(), HttpStatus.OK);
+	}
 
 	@Operation(summary = "Return list of momentum name data when search by id")
 	@ApiResponse(responseCode = "200", description = "OK")

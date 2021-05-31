@@ -1,0 +1,98 @@
+#--controller
+{
+	"name" : "",
+	"controllersManually" : "",
+	"table" : ""
+}
+
+
+#Features
+{
+	"eBOF" : "",
+	"tree" : "",
+	"summaryTree" : "",
+	"functionalArchitectureEDT" : "",
+	"functArchElemClassTree" : "",
+	"functionalDomainTree" : "",
+	"ownedByTree" : "",
+	"statusTree" : "",
+	"descriptionTree" : "",
+	"introductoryModelYearTree" : "",
+	"majorTree" : "",
+	"minorTree" : "",
+	"introCadenceTree" : "",
+	"retireMajorTree" : "",
+	"retireMinorTree" : "",
+	"retireCadenceTree" : ""
+}
+
+
+#ProgramData
+{	
+	"name" : "",
+	"programName" : "",
+	"programVariant" : "",
+	"momentumIDs" : "",
+	"projectIDChartRow" : "",
+	"projectIDChartdata" : "",
+	"programVariantsLeftBox" : "",
+	"group1DropdowninrightBox" : "",
+	"group1Rightboxcontents" : "",
+	"programPlan" : "",
+	"programCode" : "",
+	"modelYear" : "",
+	"momentumID" : "",
+	"electricalArchitecture" : "",
+	"electricalArchitectureLevel" : ""
+}
+
+#Vescom
+{
+	"programName" : "",
+	"baselineArchitectureLevel" : "",
+	"eCSCadenceTiming" : "",
+	"releasetoProgramBench" : "",
+	"integrationRelease1" : "",
+	"integrationRelease2" : "",
+	"swCalFreeze" : "",
+	"vehicleDVULTest" : "",
+	"releaseDate" : "",
+	"veSCoMNotes" : "",
+	"momentumData" : ""
+}
+
+#VescomEdit
+{
+	"program" : "",
+	"modelYear" : "",
+	"electricalArchitecture" : "",
+	"veSCoM" : "",
+	"baselineArchitectureLevel" : "",
+	"programVariant" : "",
+	"event" : "",
+	"gVDP" : "",
+	"dVUL" : "",
+	"notes" : "",
+	"eventDate" : "",
+	"lastModifiedDate" : ""
+}
+
+#Vfrp
+{
+	"summary" : "",
+	"functionalArcElDes" : "", 
+	"functArchElemClass" : "", 
+	"functionalDomain" : "", 
+	"ownedBy" : "", 
+	"status" : "", 
+	"description" : "",
+	"introductoryModelYear" : "", 
+	"major" : "", 
+	"minor" : "",
+	"introCadence" : "", 
+	"retireMajor" : "", 
+	"retireMinor" : "",
+	"retireCadence" : "" 
+}
+
+
