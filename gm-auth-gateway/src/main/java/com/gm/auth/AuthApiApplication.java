@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GmAuthApiApplication {
+public class AuthApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GmAuthApiApplication.class, args);
+		SpringApplication.run(AuthApiApplication.class, args);
 	}
 
 }

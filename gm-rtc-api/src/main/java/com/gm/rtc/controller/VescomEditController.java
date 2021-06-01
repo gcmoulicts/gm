@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 @RestController
-@RequestMapping("/VescomEditEdit")
+@RequestMapping("/vescomedit")
 public class VescomEditController {
 
 	@Autowired
