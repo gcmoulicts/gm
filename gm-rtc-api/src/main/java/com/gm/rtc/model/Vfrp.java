@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 
 @Entity
-@Table(name="Vescom")
+@Table(name="VFRP")
 public class Vfrp {
 	
 	@Id

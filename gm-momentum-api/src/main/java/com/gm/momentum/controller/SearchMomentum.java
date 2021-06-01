@@ -14,18 +14,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gm.momentum.entiry.Project;
 import com.gm.momentum.util.StaticDataUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import lombok.extern.slf4j.Slf4j;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 @RestController
 @RequestMapping("/momentum")
+@Api(value = "Momentum Data Resource to handle all controller related action and queries ")
 public class SearchMomentum{
 
 
-	@Operation(summary = "Return list of momentum data when search by ids")
-	@ApiResponse(responseCode = "200", description = "OK")
-	@GetMapping(value = "/search/{projectIds}")
+	@ApiOperation(value = "Search momentum data by id", response = List.class)
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Successfully save data"),
+			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(code = 404, message = "Requested Resource Not Found")
+	})
+	@GetMapping(value = "/{projectIds}")
 	public ResponseEntity<List<Project>> searchByMomentumId(@PathVariable Set<String> projectIds){
 		ArrayList<Project> arrayList = new ArrayList<Project>();
 		Map<String, Project> projectData = StaticDataUtil.getProjectData();
@@ -36,16 +45,26 @@ public class SearchMomentum{
 	}
 
 
-	@Operation(summary = "Return project of momentum to populate dropdown")
-	@ApiResponse(responseCode = "200", description = "OK")
+	@ApiOperation(value = "Fetch all momentum data momentum database", response = Set.class)
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Successfully save data"),
+			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(code = 404, message = "Requested Resource Not Found")
+	})
 	@GetMapping(value = "/loadall")
 	public ResponseEntity<Set<String>> loadAllIds(@PathVariable String projectId){
 		Map<String, Project> projectData = StaticDataUtil.getProjectData();
 		return new ResponseEntity<Set<String>>(projectData.keySet(), HttpStatus.OK);
 	}
 
-	@Operation(summary = "Return list of momentum name data when search by id")
-	@ApiResponse(responseCode = "200", description = "OK")
+	@ApiOperation(value = "Fetch all names from momentum database", response = List.class)
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Successfully save data"),
+			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(code = 404, message = "Requested Resource Not Found")
+	})
 	@GetMapping(value = "/names")
 	public ResponseEntity<List<String>> searchByMomentumName(){
 		List<String> names = new ArrayList<String>();

@@ -19,8 +19,8 @@ public class Vescom {
 	@Column(name="PROGRAMNAME")
 	String programName;
 	
-	@Column(name="BASELINEARCHITECTURELEVEL")
-	String baselineArchitectureLevel;
+//	@Column(name="BASELINEARCHITECTURELEVEL")
+//	String baselineArchitectureLevel;
 	
 	@Column(name="ECSCADENCETIMING")
 	String eCSCadenceTiming;
