@@ -1,6 +1,7 @@
 package com.gm.rtc.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,13 @@ public class FeaturesServiceImpl {
 	}
 	
 	public Features get(String id){
-		return featuresRepository.getById(id);
+		 Optional<Features> optional = featuresRepository.findById(id);
+		 return optional.get();
 	}
 
 	public boolean delete(String id){
-		Features Features = featuresRepository.getById(id);
-		featuresRepository.delete(Features);
+		Optional<Features> optional = featuresRepository.findById(id);
+		featuresRepository.delete(optional.get());
 		return true;
 	}
 	

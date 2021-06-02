@@ -1,6 +1,7 @@
 package com.gm.rtc.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,14 @@ public class VfrpServiceImpl {
 	}
 	
 	public Vfrp get(String id){
-		return vfrpRepository.getById(id);
+		Optional<Vfrp> optional = vfrpRepository.findById(id);
+		return optional.get();
 	}
 
 	public boolean delete(String id){
-		Vfrp Vfrp = vfrpRepository.getById(id);
-		vfrpRepository.delete(Vfrp);
+		Optional<Vfrp> optional = vfrpRepository.findById(id);
+		Vfrp vfrp = optional.get();
+		vfrpRepository.delete(vfrp);
 		return true;
 	}
 	

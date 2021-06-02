@@ -1,6 +1,7 @@
 package com.gm.rtc.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,13 @@ public class ControllerServiceImpl {
 	}
 	
 	public Controller get(String id){
-		return controllerRepository.getById(id);
+		 Optional<Controller> optional = controllerRepository.findById(id);
+		 return optional.get();
 	}
 
 	public boolean delete(String id){
-		Controller controller = controllerRepository.getById(id);
+		Optional<Controller> optional = controllerRepository.findById(id);
+		Controller controller = optional.get();
 		controllerRepository.delete(controller);
 		return true;
 	}

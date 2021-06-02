@@ -1,6 +1,7 @@
 package com.gm.rtc.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,13 @@ public class VescomServiceImpl {
 	}
 	
 	public Vescom get(String id){
-		return vescomRepository.getById(id);
+		Optional<Vescom> optional = vescomRepository.findById(id);
+		return optional.get();
 	}
 
 	public boolean delete(String id){
-		Vescom vescom = vescomRepository.getById(id);
-		vescomRepository.delete(vescom);
+		Optional<Vescom> optional = vescomRepository.findById(id);
+		vescomRepository.delete(optional.get());
 		return true;
 	}
 	

@@ -1,6 +1,7 @@
 package com.gm.rtc.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,14 @@ public class ProgramDataServiceImpl {
 	}
 	
 	public ProgramData get(String id){
-		return programDataRepository.getById(id);
+		Optional<ProgramData> optional = programDataRepository.findById(id);
+		return optional.get();
 	}
 
 	public boolean delete(String id){
-		ProgramData controller = programDataRepository.getById(id);
-		programDataRepository.delete(controller);
+		Optional<ProgramData> optional = programDataRepository.findById(id);
+		ProgramData programData = optional.get();
+		programDataRepository.delete(programData);
 		return true;
 	}
 	
