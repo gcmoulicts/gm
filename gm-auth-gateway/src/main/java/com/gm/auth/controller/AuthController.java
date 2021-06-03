@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gm.auth.model.LoginRequest;
-import com.gm.auth.model.LoginResponse;
+import com.gm.auth.model.RTCHandler;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -21,7 +20,6 @@ import io.swagger.annotations.ApiResponses;
 @RequestMapping("/auth")
 @Api(value = "Momentum Data Resource to handle all controller related action and queries ")
 public class AuthController {
-
 	
 	@ApiOperation(value = "Search momentum data by id", response = List.class)
 	@ApiResponses(value = {
@@ -30,14 +28,31 @@ public class AuthController {
 			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
 			@ApiResponse(code = 404, message = "Requested Resource Not Found")
 	})
-	@PostMapping(value = "/login")
-	public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest){
-		LoginResponse loginResponse = new LoginResponse();
-		loginResponse.setUsername(loginRequest.getUsername());
-		loginResponse.setPassword(loginRequest.getPassword());
-		return new ResponseEntity<LoginResponse>(loginResponse, HttpStatus.OK);
+	@PostMapping(value = "/rtclogin")
+	public ResponseEntity<RTCHandler> rtcLogin(@RequestBody LoginRequest loginRequest){
+//		DiscardBaselineSnippet discardBaselineSnippet = new DiscardBaselineSnippet(); 
+		String repositoryUri = loginRequest.getRepositoryUri(); 
+		String username = loginRequest.getUsername();
+		String password = loginRequest.getPassword();
+		String workspace = loginRequest.getWorkspace();
+		String component = loginRequest.getComponent();
+		//RTCHandler veridyRTC = discardBaselineSnippet.veridyRTC(repositoryUri, username, password, workspace, component);
+		return new ResponseEntity<RTCHandler>(new RTCHandler(), HttpStatus.OK);
 	}
-	
+
+
+	@ApiOperation(value = "Search momentum data by id", response = List.class)
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Successfully save data"),
+			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(code = 404, message = "Requested Resource Not Found")
+	})
+	@PostMapping(value = "/momentumlogin")
+	public ResponseEntity<LoginRequest> momentumLogin(@RequestBody String gmId){
+		LoginRequest loginRequest = new LoginRequest();
+		return new ResponseEntity<LoginRequest>(loginRequest, HttpStatus.OK);
+	}
 
 	@ApiOperation(value = "Search momentum data by id", response = List.class)
 	@ApiResponses(value = {
@@ -47,12 +62,9 @@ public class AuthController {
 			@ApiResponse(code = 404, message = "Requested Resource Not Found")
 	})
 	@PostMapping(value = "/logingmid")
-	public ResponseEntity<LoginResponse> loginViaGmid(@RequestBody String gmId){
-		LoginResponse loginResponse = new LoginResponse();
-		loginResponse.setUsername(gmId);
-		loginResponse.setPassword("no password");
-		return new ResponseEntity<LoginResponse>(loginResponse, HttpStatus.OK);
+	public ResponseEntity<LoginRequest> loginViaGmid(@RequestBody String gmId){
+		LoginRequest loginRequest = new LoginRequest();
+		return new ResponseEntity<LoginRequest>(loginRequest, HttpStatus.OK);
 	}
-	
 	
 }
